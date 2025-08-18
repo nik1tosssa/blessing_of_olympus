@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:blessing_of_olympus/app/screens/shop_screen/shop_screen.dart';
+import 'package:blessing_of_olympus/app/screens/daily_bonus_screen/daily_bonus_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key, required this.title});
@@ -83,12 +85,12 @@ class _HomeScreenState extends State<HomeScreen> {
                             children: <Widget>[
                               IconButton(
                                 padding: EdgeInsets.fromLTRB(0, 0, 0, 0),
-                                onPressed: () {},
+                                onPressed: (){Navigator.push(context, MaterialPageRoute(builder: (context) => ShopScreen()));},
                                 icon: Image.asset('assets/images/main_screen/shop.png'),
                               ),
                               IconButton(
                                 padding: EdgeInsets.fromLTRB(0, 0, 0, 0),
-                                onPressed: () {},
+                                onPressed: (){Navigator.push(context, MaterialPageRoute(builder: (context) => DailyBonusScreen()));},
                                 icon: Image.asset(
                                   'assets/images/main_screen/daily_bonus.png',
                                 ),
