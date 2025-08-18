@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:blessing_of_olympus/app/screens/home_screen/home_screen.dart';
 
 class DailyBonusScreen extends StatefulWidget {
   const DailyBonusScreen({super.key});
@@ -288,7 +289,15 @@ class _DailyBonusScreenState extends State<DailyBonusScreen> {
                     Padding(
                       padding: EdgeInsets.fromLTRB(0, 425, 0, 0),
                       child: IconButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => HomeScreen(title: ''),
+                            ),
+                          );
+                        },
+
                         icon: Image.asset(
                           'assets/images/daily_bonus_screen/back.png',
                           scale: 1.3,
