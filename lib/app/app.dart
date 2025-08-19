@@ -17,7 +17,7 @@ class App extends StatelessWidget {
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
       ),
-      home: const HomeScreen(title: '',),
+      home: const HomeScreen(title: 'title'),
     );
   }
 }
