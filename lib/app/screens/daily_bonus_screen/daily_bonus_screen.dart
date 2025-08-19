@@ -3,15 +3,12 @@ import 'package:blessing_of_olympus/app/screens/home_screen/home_screen.dart';
 import 'package:blessing_of_olympus/app/widgets/custom_button.dart';
 import 'package:blessing_of_olympus/app/widgets/chest_button.dart';
 
-
-
 class DailyBonusScreen extends StatefulWidget {
   const DailyBonusScreen({super.key});
 
   @override
   State<DailyBonusScreen> createState() => _DailyBonusScreenState();
 }
-
 
 class ChestState {
   final int id; // Уникальный идентификатор или индекс
@@ -24,7 +21,6 @@ class ChestState {
     this.logicStatus = LogicChestStatus.locked,
   });
 }
-
 
 class _DailyBonusScreenState extends State<DailyBonusScreen> {
   final double _chestsHorizontalPadding = 10;
@@ -40,14 +36,12 @@ class _DailyBonusScreenState extends State<DailyBonusScreen> {
     _initializeBalance();
   }
 
-  _initializeBalance() {
-
-  }
+  _initializeBalance() {}
 
   void _initializeChests() {
     _chestsStates = List.generate(
       9, // Общее количество сундуков
-          (index) => ChestState(
+      (index) => ChestState(
         id: index,
         // Начальные статусы можно задать здесь, если они отличаются
         visualStatus: VisualChestStatus.closed,
@@ -63,12 +57,12 @@ class _DailyBonusScreenState extends State<DailyBonusScreen> {
         if (chestState.id == tappedChestId) {
           // Статусы для нажатого сундука
           chestState.visualStatus = VisualChestStatus.opened; // Пример
-          chestState.logicStatus = LogicChestStatus.locked;  // Пример
+          chestState.logicStatus = LogicChestStatus.locked; // Пример
           _gemBalance += 100; // Пример
         } else {
           // Статусы для ВСЕХ ОСТАЛЬНЫХ сундуков
           chestState.visualStatus = VisualChestStatus.closed; // Пример
-          chestState.logicStatus = LogicChestStatus.locked;   // Пример
+          chestState.logicStatus = LogicChestStatus.locked; // Пример
         }
       }
     });
@@ -78,11 +72,11 @@ class _DailyBonusScreenState extends State<DailyBonusScreen> {
   }
 
   Widget _buildChestRow(int startId) {
-
-
     return Padding(
       padding: EdgeInsets.symmetric(
-          horizontal: _chestsHorizontalPadding, vertical: 2),
+        horizontal: _chestsHorizontalPadding,
+        vertical: 2,
+      ),
       child: Row(
         children: <Widget>[
           Expanded(
@@ -93,7 +87,11 @@ class _DailyBonusScreenState extends State<DailyBonusScreen> {
               logicStatus: _chestsStates[startId].logicStatus,
               scale: 1,
               // Передаем ID и обработчик нажатия
-              onPressed: () => {if (_chestsStates[startId].logicStatus == LogicChestStatus.unlocked){_onChestTapped(startId)}},
+              onPressed: () => {
+                if (_chestsStates[startId].logicStatus ==
+                    LogicChestStatus.unlocked)
+                  {_onChestTapped(startId)},
+              },
             ),
           ),
           const SizedBox(width: 5),
@@ -103,7 +101,11 @@ class _DailyBonusScreenState extends State<DailyBonusScreen> {
               visualStatus: _chestsStates[startId + 1].visualStatus,
               logicStatus: _chestsStates[startId + 1].logicStatus,
               scale: 1,
-              onPressed: () => {if (_chestsStates[startId + 1].logicStatus == LogicChestStatus.unlocked){_onChestTapped(startId + 1)}},
+              onPressed: () => {
+                if (_chestsStates[startId + 1].logicStatus ==
+                    LogicChestStatus.unlocked)
+                  {_onChestTapped(startId + 1)},
+              },
             ),
           ),
           const SizedBox(width: 5),
@@ -113,7 +115,11 @@ class _DailyBonusScreenState extends State<DailyBonusScreen> {
               visualStatus: _chestsStates[startId + 2].visualStatus,
               logicStatus: _chestsStates[startId + 2].logicStatus,
               scale: 1,
-              onPressed: () => {if (_chestsStates[startId + 2].logicStatus == LogicChestStatus.unlocked){_onChestTapped(startId + 2)}},
+              onPressed: () => {
+                if (_chestsStates[startId + 2].logicStatus ==
+                    LogicChestStatus.unlocked)
+                  {_onChestTapped(startId + 2)},
+              },
             ),
           ),
         ],
@@ -220,8 +226,9 @@ class _DailyBonusScreenState extends State<DailyBonusScreen> {
                       ),
                       Padding(
                         padding: EdgeInsets.symmetric(
-                            horizontal: _chestsHorizontalPadding + 10,
-                            vertical: 5),
+                          horizontal: _chestsHorizontalPadding + 10,
+                          vertical: 5,
+                        ),
                         child: Column(
                           mainAxisSize: MainAxisSize.min,
                           children: <Widget>[
@@ -250,10 +257,7 @@ class _DailyBonusScreenState extends State<DailyBonusScreen> {
                                     return const LinearGradient(
                                       begin: Alignment.topCenter,
                                       end: Alignment.bottomCenter,
-                                      colors: [
-                                        Colors.white,
-                                        Colors.deepPurple
-                                      ],
+                                      colors: [Colors.white, Colors.deepPurple],
                                     ).createShader(bounds);
                                   },
                                   child: const Text(
@@ -276,10 +280,20 @@ class _DailyBonusScreenState extends State<DailyBonusScreen> {
                               ],
                             ),
                             const SizedBox(height: 10),
-                            _buildChestRow(0), // Первый ряд, сундуки 0, 1, 2
-                            _buildChestRow(3), // Второй ряд, сундуки 3, 4, 5
-                            _buildChestRow(6), // Третий ряд, сундуки 6, 7, 8
 
+                            Container(
+                              constraints: BoxConstraints(maxWidth: 325),
+                              child: Column(
+                                children: <Widget>[
+                                  _buildChestRow(0),
+                                  // Первый ряд, сундуки 0, 1, 2
+                                  _buildChestRow(3),
+                                  // Второй ряд, сундуки 3, 4, 5
+                                  _buildChestRow(6),
+                                  // Третий ряд, сундуки 6, 7, 8
+                                ],
+                              ),
+                            ),
                           ],
                         ),
                       ),
@@ -292,9 +306,7 @@ class _DailyBonusScreenState extends State<DailyBonusScreen> {
                               context,
                               MaterialPageRoute(
                                 builder: (context) =>
-                                const HomeScreen(
-                                  title: '',
-                                ),
+                                    const HomeScreen(title: ''),
                               ),
                             );
                           },
@@ -316,4 +328,3 @@ class _DailyBonusScreenState extends State<DailyBonusScreen> {
     );
   }
 }
-
