@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'package:blessing_of_olympus/app/widgets/custom_button.dart';
+
 class NoInternetConnectionScreen extends StatefulWidget {
   const NoInternetConnectionScreen({super.key});
 
@@ -69,12 +71,15 @@ class _NoInternetConnectionScreenState
                     ],
                   ),
                   SizedBox(height: 10),
-                  IconButton(
+
+                  CustomButton(
+                    text: 'TRY AGAIN',
                     onPressed: () {},
-                    alignment: Alignment.center,
-                    icon: Image.asset(
-                      'assets/images/no_internet_connection_screen/try_again.png',
-                    ),
+                    color: ButtonColor.red,
+                    size: ButtonSize.medium,
+                    textSize: 27,
+                    topTextPadding: 0,
+                    scale: 1,
                   ),
                 ],
               ),
