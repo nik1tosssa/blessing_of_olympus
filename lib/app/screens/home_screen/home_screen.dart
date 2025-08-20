@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:blessing_of_olympus/app/screens/shop_screen/shop_screen.dart';
 import 'package:blessing_of_olympus/app/screens/daily_bonus_screen/daily_bonus_screen.dart';
+import 'package:blessing_of_olympus/app/screens/settings_screen.dart';
 
 import 'package:blessing_of_olympus/app/widgets/custom_button.dart';
 
@@ -75,7 +76,6 @@ class _HomeScreenState extends State<HomeScreen> {
                               color: ButtonColor.blue,
                               size: ButtonSize.large, // Предполагается, что CustomButton правильно обрабатывает Size
                               textSize: 37,
-                              topTextPadding: 0,
                               scale: 1,
                             ),
 
@@ -88,12 +88,14 @@ class _HomeScreenState extends State<HomeScreen> {
                               child: Column(
                                 children: <Widget>[
                                   CustomButton(
-                                    onPressed: () {},
+                                    onPressed: () {Navigator.push(
+                                      context,
+                                      MaterialPageRoute(builder: (context) => const ShopScreen()),
+                                    );},
                                     text: 'SHOP',
                                     color: ButtonColor.red,
                                     size: ButtonSize.medium,
                                     textSize: 25,
-                                    topTextPadding: 0,
                                     scale: 1,
                                   ),
                                   const SizedBox(height: 0), // Отступ между кнопками
@@ -106,17 +108,17 @@ class _HomeScreenState extends State<HomeScreen> {
                                     color: ButtonColor.red,
                                     size: ButtonSize.medium,
                                     textSize: 25,
-                                    topTextPadding: 0,
                                     scale: 1,
                                   ),
                                   const SizedBox(height: 0), // Отступ между кнопками
                                   CustomButton(
-                                    onPressed: () {},
+                                    onPressed: () {Navigator.push(
+                                      context, MaterialPageRoute(builder: (context) => const SettingsScreen()),
+                                    );},
                                     text: 'SETTINGS',
                                     color: ButtonColor.red,
                                     size: ButtonSize.medium,
                                     textSize: 25,
-                                    topTextPadding: 0,
                                     scale: 1,
                                   ),
                                 ],
