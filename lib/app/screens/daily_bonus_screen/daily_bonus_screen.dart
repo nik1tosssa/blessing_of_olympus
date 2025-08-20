@@ -2,9 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:blessing_of_olympus/app/screens/home_screen/home_screen.dart';
 import 'package:blessing_of_olympus/app/widgets/custom_button.dart';
 import 'package:blessing_of_olympus/app/widgets/chest_button.dart';
+import 'package:blessing_of_olympus/app/screens/daily_bonus_get_screen/daily_bonus_get_screen.dart';
 
 class DailyBonusScreen extends StatefulWidget {
-  const DailyBonusScreen({super.key});
+  const DailyBonusScreen({super.key, required this.gemBalance});
+
+  final int gemBalance;
 
   @override
   State<DailyBonusScreen> createState() => _DailyBonusScreenState();
@@ -24,8 +27,6 @@ class ChestState {
 
 class _DailyBonusScreenState extends State<DailyBonusScreen> {
   final double _chestsHorizontalPadding = 10;
-
-  int _gemBalance = 0;
 
   late List<ChestState> _chestsStates;
 
@@ -58,7 +59,11 @@ class _DailyBonusScreenState extends State<DailyBonusScreen> {
           // Статусы для нажатого сундука
           chestState.visualStatus = VisualChestStatus.opened; // Пример
           chestState.logicStatus = LogicChestStatus.locked; // Пример
-          _gemBalance += 100; // Пример
+
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => const DailyBonusGetScreen(coinsGet: 999,)),
+          );
         } else {
           // Статусы для ВСЕХ ОСТАЛЬНЫХ сундуков
           chestState.visualStatus = VisualChestStatus.closed; // Пример
@@ -176,7 +181,7 @@ class _DailyBonusScreenState extends State<DailyBonusScreen> {
                                     Padding(
                                       padding: EdgeInsets.zero,
                                       child: Text(
-                                        _gemBalance.toString(),
+                                        widget.gemBalance.toString(),
                                         textAlign: TextAlign.center,
                                         style: TextStyle(
                                           fontFamily: 'ProtestStrike',
