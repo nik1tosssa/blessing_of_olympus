@@ -65,6 +65,7 @@ flutter:
     - assets/images/shop_screen/
     - assets/images/general_buttons/
     - assets/images/daily_bonus_get_screen/
+    - assets/images/settings_screen/
   fonts:
     - family: ProtestStrike
       fonts:
