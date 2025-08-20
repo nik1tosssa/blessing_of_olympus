@@ -78,7 +78,6 @@ class _NoInternetConnectionScreenState
                     color: ButtonColor.red,
                     size: ButtonSize.medium,
                     textSize: 27,
-                    topTextPadding: 0,
                     scale: 1,
                   ),
                 ],
