@@ -12,8 +12,10 @@ class CustomButton extends StatefulWidget {
     required this.color,
     required this.size,
     required this.textSize,
-    required this.topTextPadding,
-    required this.scale
+    required this.scale,
+    this.forSale = false,
+    this.price = 0,
+    this.gemScale = 1,
   });
 
   final String text;
@@ -21,8 +23,10 @@ class CustomButton extends StatefulWidget {
   final ButtonColor color;
   final ButtonSize size;
   final double textSize;
-  final double topTextPadding;
   final double scale;
+  final bool forSale;
+  final int price;
+  final double gemScale;
   @override
   State<CustomButton> createState() => _CustomButtonState();
 }
@@ -69,6 +73,50 @@ class _CustomButtonState extends State<CustomButton> with SingleTickerProviderSt
     widget.onPressed();
   }
 
+  Widget _buttonInscription() {
+    if (!widget.forSale){
+      return Padding(
+        padding: EdgeInsets.only(top: 0),
+        child: Text(
+          widget.text,
+          textAlign: TextAlign.center,
+          style: TextStyle(
+            color: Colors.white,
+            fontSize: widget.textSize,
+            fontFamily: 'ProtestStrike',
+          ),
+        ),
+      );
+    } else {
+      return Row(
+        mainAxisSize: MainAxisSize.min,
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: <Widget>[
+          Text(
+            widget.text,
+            textAlign: TextAlign.center,
+            style: TextStyle(
+              color: Colors.white,
+              fontSize: widget.textSize,
+              fontFamily: 'ProtestStrike',
+            ),
+          ),
+          Text(
+            ' ${widget.price.toString()}',
+            textAlign: TextAlign.center,
+            style: TextStyle(
+              color: Colors.white,
+              fontSize: widget.textSize - 5,
+              fontFamily: 'ProtestStrike',
+            ),
+          ),
+          Image.asset('assets/images/shop_screen/gem_icon.png', scale: widget.gemScale,),
+        ],
+      );
+    }
+  }
+
+
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -86,19 +134,7 @@ class _CustomButtonState extends State<CustomButton> with SingleTickerProviderSt
                     'assets/images/general_buttons/${widget.color.name}_${widget.size.name}.png',
                     scale: widget.scale,
                   ),
-
-                  Padding(
-                    padding: EdgeInsets.only(top: widget.topTextPadding),
-                    child: Text(
-                      widget.text,
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: widget.textSize,
-                        fontFamily: 'ProtestStrike',
-                      ),
-                    ),
-                  ),
+                  _buttonInscription()
                 ],
               ),
             ),
