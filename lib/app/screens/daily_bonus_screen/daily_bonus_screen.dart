@@ -318,7 +318,6 @@ class _DailyBonusScreenState extends State<DailyBonusScreen> {
                           color: ButtonColor.red,
                           size: ButtonSize.medium,
                           textSize: 25,
-                          topTextPadding: 0,
                           scale: 1.3,
                         ),
                       ),
