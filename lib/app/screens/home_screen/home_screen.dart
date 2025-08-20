@@ -50,101 +50,111 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
             ),
             child: Center(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.start,
+              child: Stack(
                 children: <Widget>[
-                  Padding(
-                    padding: const EdgeInsets.fromLTRB(10, 10, 10, 0), // Отступы для молнии
-                    child: Image.asset(
-                      'assets/images/main_screen/lightning.png',
-                      scale: 1.3,
-                    ),
+                  Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: <Widget>[
+                      Padding(
+                        padding: const EdgeInsets.fromLTRB(10, 5, 10, 0), // Отступы для молнии
+                        child: Image.asset(
+                          'assets/images/main_screen/lightning.png',
+                          scale: 1.3,
+                        ),
+                      ),
+
+                      // Отступ для всей группы кнопок от молнии и "Best Score"
+                      Padding(
+                        padding: EdgeInsets.symmetric(horizontal: _screenWidthPadding, vertical: 20), // Добавим немного вертикального отступа
+                        child: Column(
+                          children: <Widget>[
+                            // Кнопка PLAY GAME - будет использовать _screenWidthPadding
+                            CustomButton(
+                              onPressed: () {},
+                              text: 'PLAY GAME',
+                              color: ButtonColor.blue,
+                              size: ButtonSize.large, // Предполагается, что CustomButton правильно обрабатывает Size
+                              textSize: 37,
+                              topTextPadding: 0,
+                              scale: 1,
+                            ),
+
+                            // Добавим небольшой отступ между кнопкой PLAY GAME и остальными
+                            const SizedBox(height: 0), // Можете настроить высоту
+
+                            // Внутренний Padding и Column для остальных кнопок, чтобы они были уже
+                            Padding(
+                              padding: const EdgeInsets.symmetric(horizontal: 30), // Дополнительный отступ для кнопок ниже
+                              child: Column(
+                                children: <Widget>[
+                                  CustomButton(
+                                    onPressed: () {},
+                                    text: 'SHOP',
+                                    color: ButtonColor.red,
+                                    size: ButtonSize.medium,
+                                    textSize: 25,
+                                    topTextPadding: 0,
+                                    scale: 1,
+                                  ),
+                                  const SizedBox(height: 0), // Отступ между кнопками
+                                  CustomButton(
+                                    onPressed: () {Navigator.push(
+                                      context,
+                                      MaterialPageRoute(builder: (context) => const DailyBonusScreen(gemBalance: 0,)),
+                                    );},
+                                    text: 'DAILY BONUS',
+                                    color: ButtonColor.red,
+                                    size: ButtonSize.medium,
+                                    textSize: 25,
+                                    topTextPadding: 0,
+                                    scale: 1,
+                                  ),
+                                  const SizedBox(height: 0), // Отступ между кнопками
+                                  CustomButton(
+                                    onPressed: () {},
+                                    text: 'SETTINGS',
+                                    color: ButtonColor.red,
+                                    size: ButtonSize.medium,
+                                    textSize: 25,
+                                    topTextPadding: 0,
+                                    scale: 1,
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                      SizedBox(height: 30),
+                    ],
                   ),
 
-                  // Отступ для всей группы кнопок от молнии и "Best Score"
-                  Padding(
-                    padding: EdgeInsets.symmetric(horizontal: _screenWidthPadding, vertical: 20), // Добавим немного вертикального отступа
-                    child: Column(
-                      children: <Widget>[
-                        // Кнопка PLAY GAME - будет использовать _screenWidthPadding
-                        CustomButton(
-                          onPressed: () {},
-                          text: 'PLAY GAME',
-                          color: ButtonColor.blue,
-                          size: ButtonSize.large, // Предполагается, что CustomButton правильно обрабатывает Size
-                          textSize: 37,
-                          topTextPadding: 0,
-                          scale: 1,
-                        ),
-
-                        // Добавим небольшой отступ между кнопкой PLAY GAME и остальными
-                        const SizedBox(height: 0), // Можете настроить высоту
-
-                        // Внутренний Padding и Column для остальных кнопок, чтобы они были уже
-                        Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 30), // Дополнительный отступ для кнопок ниже
-                          child: Column(
-                            children: <Widget>[
-                              CustomButton(
-                                onPressed: () {},
-                                text: 'SHOP',
-                                color: ButtonColor.red,
-                                size: ButtonSize.medium,
-                                textSize: 25,
-                                topTextPadding: 0,
-                                scale: 1,
-                              ),
-                              const SizedBox(height: 0), // Отступ между кнопками
-                              CustomButton(
-                                onPressed: () {Navigator.push(
-                                  context,
-                                  MaterialPageRoute(builder: (context) => const DailyBonusScreen()),
-                                );},
-                                text: 'DAILY BONUS',
-                                color: ButtonColor.red,
-                                size: ButtonSize.medium,
-                                textSize: 25,
-                                topTextPadding: 0,
-                                scale: 1,
-                              ),
-                              const SizedBox(height: 0), // Отступ между кнопками
-                              CustomButton(
-                                onPressed: () {},
-                                text: 'SETTINGS',
-                                color: ButtonColor.red,
-                                size: ButtonSize.medium,
-                                textSize: 25,
-                                topTextPadding: 0,
-                                scale: 1,
-                              ),
-                            ],
+                  Align(
+                    alignment: Alignment.bottomCenter,
+                    child: Padding(
+                      padding: const EdgeInsets.fromLTRB(10, 0, 10, 30), // Увеличим верхний отступ
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: <Widget>[
+                          const Text(
+                            'BEST SCORE',
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 24,
+                              fontFamily: 'ProtestStrike',
+                            ),
                           ),
-                        ),
-                      ],
-                    ),
-                  ),
-
-                  Padding(
-                    padding: const EdgeInsets.fromLTRB(10, 30, 10, 0), // Увеличим верхний отступ
-                    child: Column(
-                      children: <Widget>[
-                        const Text(
-                          'BEST SCORE',
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 27,
-                            fontFamily: 'ProtestStrike',
+                          const Text(
+                            '1234567890',
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 35,
+                              fontFamily: 'ProtestStrike',
+                            ),
                           ),
-                        ),
-                        const Text(
-                          '1234567890',
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 47,
-                            fontFamily: 'ProtestStrike',
-                          ),
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
                   ),
                 ],
