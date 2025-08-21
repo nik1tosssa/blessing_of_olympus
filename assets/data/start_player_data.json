@@ -1,0 +1,42 @@
+{
+  "bestScore": 0,
+  "lastScore": 0,
+  "balance": 100,
+  "heroNames": [
+    "zeus",
+    "athena",
+    "poseidon",
+    "hades"
+  ],
+  "heroStatuses": {
+    "zeus": "selected",
+    "athena": "unselected",
+    "poseidon": "forSale",
+    "hades": "forSale"
+  },
+  "heroPrices": {
+    "zeus": 0,
+    "athena": 500,
+    "poseidon": 1000,
+    "hades": 5000
+  },
+  "itemNames": [
+    "magnet",
+    "shield",
+    "lightning"
+  ],
+  "itemPrices": {
+    "magnet": 350,
+    "shield": 350,
+    "lightning": 350
+  },
+  "itemCounts": {
+    "magnet": 0,
+    "shield": 0,
+    "lightning": 0
+  },
+  "lastDailyBonus": "2000-01-01T10:00:00.000Z",
+  "musicOn": true,
+  "soundOn": true,
+  "vibrationOn": true
+}
