@@ -1,7 +1,11 @@
+import 'package:blessing_of_olympus/app/screens/game_over_screen/game_over_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:blessing_of_olympus/app/screens/shop_screen/shop_screen.dart';
 import 'package:blessing_of_olympus/app/screens/daily_bonus_screen/daily_bonus_screen.dart';
-import 'package:blessing_of_olympus/app/screens/settings_screen.dart';
+import 'package:blessing_of_olympus/app/screens/settings_screen/settings_screen.dart';
+import 'package:blessing_of_olympus/app/screens/game_screen/game_screen.dart';
+
+import 'package:blessing_of_olympus/app/models/player_info.dart';
 
 import 'package:blessing_of_olympus/app/widgets/custom_button.dart';
 
@@ -19,6 +23,8 @@ class _HomeScreenState extends State<HomeScreen> {
   final double _screenWidthPadding = 35;
   // final double _topMainPadding = 0; // Не используется явно ниже, можно убрать если не нужно
   // final double _bottomMainPadding = 0; // Не используется явно ниже, можно убрать если не нужно
+
+
 
   @override
   Widget build(BuildContext context) {
@@ -71,7 +77,12 @@ class _HomeScreenState extends State<HomeScreen> {
                           children: <Widget>[
                             // Кнопка PLAY GAME - будет использовать _screenWidthPadding
                             CustomButton(
-                              onPressed: () {},
+                              onPressed: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(builder: (context) => GameScreen()),
+                                );
+                              },
                               text: 'PLAY GAME',
                               color: ButtonColor.blue,
                               size: ButtonSize.large, // Предполагается, что CustomButton правильно обрабатывает Size
