@@ -22,26 +22,29 @@ class ShopScreen extends StatefulWidget {
 class _ShopScreenState extends State<ShopScreen> {
   late List<Map<String, dynamic>> heroesData;
   late int playerBalance;
-
-  // Цены героев
-  final Map<String, int> heroPrices = {
-    'zeus': 0, // Зевс "куплен" по умолчанию (цена 0)
-    'athena': 500,
-    'poseidon': 1000,
-    'hades': 5000,
-  };
-  final Map<String, int> itemPrice = {
-    'magnet': 350,
-    'lightning': 350,
-    'shield': 350,
-  };
+  late Map<String, int> heroPrices;
+  late Map<String, int> itemPrice;
 
   @override
   void initState() {
     super.initState();
     playerBalance = 6200; // TODO: Замените на актуальный баланс
 
+    // Цены героев
+    //todo: Замените на актуальные цены из файла
+    heroPrices = {
+      'zeus': 0, // Зевс "куплен" по умолчанию (цена 0)
+      'athena': 500,
+      'poseidon': 1000,
+      'hades': 5000,
+    };
 
+    //todo: Замените на актуальные цены из файла
+    itemPrice = {
+      'magnet': 350,
+      'lightning': 350,
+      'shield': 350,
+    };
 
     heroesData = [
       {
@@ -126,7 +129,6 @@ class _ShopScreenState extends State<ShopScreen> {
         playerBalance -= price;
         // После покупки герой становится 'unselected' (куплен, но не выбран)
         heroToPurchaseData['status'] = HeroStatus.unselected;
-
       });
     }
   }
@@ -307,15 +309,24 @@ class _ShopScreenState extends State<ShopScreen> {
                                   children: <Widget>[
                                     Expanded(
                                       flex: 1,
-                                      child: ItemCard(itemName: 'magnet', price: itemPrice['magnet']??0,),
+                                      child: ItemCard(
+                                        itemName: 'magnet',
+                                        price: itemPrice['magnet'] ?? 0,
+                                      ),
                                     ),
                                     Expanded(
                                       flex: 1,
-                                      child: ItemCard(itemName: 'lightning', price: itemPrice['lightning']??0,),
+                                      child: ItemCard(
+                                        itemName: 'lightning',
+                                        price: itemPrice['lightning'] ?? 0,
+                                      ),
                                     ),
                                     Expanded(
                                       flex: 1,
-                                      child: ItemCard(itemName: 'shield', price: itemPrice['shield']??0,),
+                                      child: ItemCard(
+                                        itemName: 'shield',
+                                        price: itemPrice['shield'] ?? 0,
+                                      ),
                                     ),
                                   ],
                                 ),
