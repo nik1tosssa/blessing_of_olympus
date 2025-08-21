@@ -6,7 +6,6 @@ import 'package:blessing_of_olympus/app/screens/daily_bonus_screen/daily_bonus_s
 import 'package:blessing_of_olympus/app/screens/shop_screen/shop_screen.dart';
 import 'package:blessing_of_olympus/app/screens/daily_bonus_get_screen/daily_bonus_get_screen.dart';
 
-
 class App extends StatelessWidget {
   const App({super.key});
 
